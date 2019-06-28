@@ -1,0 +1,219 @@
+\documentclass{article}
+\title{TODO}
+\author{Leon Kaiser}
+\date{2011-05-31}
+\pagenumbering{arabic}
+\pagestyle{headings}
+\nofiles
+\begin{document}
+\maketitle
+\tableofcontents
+\contentsline {section}{\numberline {1}Tasks Organized by Priority}{2}
+\contentsline {subsection}{\numberline {1.1}High Priority}{2}
+\contentsline {subsection}{\numberline {1.2}Medium Priority}{2}
+\contentsline {subsection}{\numberline {1.3}Low Priority}{3}
+\contentsline {subsection}{\numberline {1.4}Unknown Priority}{3}
+\contentsline {section}{\numberline {2}Relevant IRC/IRL logs:}{4}
+\contentsline {subsection}{\numberline {2.1}Jmax}{4}
+\contentsline {subsubsection}{\numberline {2.1.1}Jmax and madvirii}{4}
+\contentsline {subsubsection}{\numberline {2.1.2}Jmax, vx`, and madvirii.}{4}
+\contentsline {subsection}{\numberline {2.2}LiteralKa blogging to no-one in particular.}{5}
+\contentsline {subsection}{\numberline {2.3}Rufas}{5}
+\contentsline {subsubsection}{\numberline {2.3.1}Rufas, sparc, and thyme}{5}
+\contentsline {subsubsection}{\numberline {2.3.2}Rufas, incog, and rshxd.}{6}
+\contentsline {subsection}{\numberline {2.4}The l0de Radio Hour}{6}
+\contentsline {subsubsection}{\numberline {2.4.1}Rufas at [S1E12] 16:26}{6}
+\contentsline {subsubsection}{\numberline {2.4.2}Rufas at [20100409] 30:00}{6}
+\contentsline {subsubsection}{\numberline {2.4.3}sloth at [20100409] 3:07:21}{7}
+\newpage
+% {{{ Tasks organized by priority
+\section{Tasks Organized by Priority}\label{Tasks Organized by Priority}\index{Tasks Organized by Priority}
+% {{{ High Priority
+\subsection{High Priority}\label{High Priority}\index{High Priority}
+\begin{itemize}
+\item Support clone connections via {\tt TOR}.
+\begin{itemize}
+\item {\tt TOR} might actually already be supported by {\tt PROXY}.
+\end{itemize}
+\item File flooding with \emph{optional} adjustments for nick-length and latency.
+\begin{itemize}
+\item The reason for the `optional' bit is because one won't necessarily need a nick-length adjustment if the file being flooded is not an {\tt ASCII} file (in fact, it will just look weird.)
+\end{itemize}
+\item Permit (bot)net to target multiple networks (be able to send separate commands to an individual network's bots.
+\item Implement {\tt STUPID}-like {\tt SSH} tunneling. ({\tt SSH Tunnel Utilizing Python IRC Destroyer}.)
+\item {\tt nickspam.pl}-style nick spamming (using {\tt /NAMES} output.)
+\end{itemize}
+% }}}
+% {{{ Medium Priority
+\subsection{Medium Priority}\label{Medium Priority}\index{Medium Priority}
+\begin{itemize}
+\item Add `nickshuffle' with `nickbase' option.
+\item {\tt do\_jupe()}:
+\begin{itemize}
+\item Call on \{de,re,\}connection.
+\end{itemize}
+\item muhstik's mechanism to do {\tt MODE}s and {\tt KICK}s sucks. It doesn't track any list of nicks to op, or nicks to {\tt KICK}, but it tries to change with simple {\tt MODE +o} and {\tt KICK}. This needs to be recoded with penalty handling.
+\item Mass\{{\tt KNOCK},{\tt INVITE},{\tt TOPIC}\}.
+\begin{itemize}
+\item For mass{\tt INVITE}s, allow a mask (*!*@*.* style) `blacklist' of sorts, so that the clones don't {\tt INVITE} honeypot bots, lorf.
+\end{itemize}
+\item Add a `stop connect' command (`pause' or w/e.)
+\begin{itemize}
+\item It should toggle, obviously.
+\end{itemize}
+\item Max bots for connect -- maximum successful bots, not maximum connections.
+\begin{itemize}
+\item Allow increase/decrease.
+\end{itemize}
+\item Support {\tt SSL}/{\tt TLS} and {\tt SASL} {\tt IRC} connections%
+\footnote[1]{Leach, P., Newman, C. \emph{Using Digest Authentication as a SASL Mechanism}, {\tt RFC 2831}, May 2000, (http://www.ietf.org/rfc/rfc2831.txt)}%
+\footnote[2]{Myers, J. \emph{Simple Authentication and Security Layer (SASL)}, {\tt RFC 2222}, October 1997. (http://www.ietf.org/rfc/rfc2222.txt)}%
+\footnote[3]{Newman, C. \emph{Anonymous SASL Mechanism}, {\tt RFC 2245}, November 1997. (http://www.ietf.org/rfc/rfc2245.txt)}
+\item Fix the buffer overflow or what the fuck ever when scan mode is enabled.
+\end{itemize}
+% }}}
+% {{{ Low Priority
+\subsection{Low Priority}\label{Low Priority}\index{Low Priority}
+\begin{itemize}
+\item Inline documentation.
+\item {\tt TOPIC} lock mode.
+\item {\tt TOPIC} fight mode.
+\item {\tt CTCP} responses.
+\item Random colored messages.
+\item Spam every person, (non-)\{op,ircop,voice\}, etc. in the channel.
+\item \{Mass,Single\} reconnect (for evading {\tt ident} bans.)
+\item Detect {\tt MODE +g} notifications on {\tt PRIVMSG}.
+\begin{itemize}
+\item Probably should just issue a warning or something.
+\end{itemize}
+\item Add \emph{optional} spectator -- bot that watches, and doesn't respond to `all'.
+\item Modify bot behavior so that if a clone is the only `user' in a channel, the clone will cycle \emph{only} once. If deopped by ChanServ, etc. then give up.
+\begin{itemize}
+\item Possibly include a configuration setting that determines if channel registration is possible on the network ({\tt boolean}, on the off-chance that a network with NickServ doesn't have ChanServ, as it would otherwise be covered by {\tt conf.dalnet}.)
+\end{itemize}
+\item Does {\tt echo} mimic {\tt CTCP ACTION}s as well?
+\item Allow \emph{optional} Cisco passwords (in format IP\{:PW,\}.)
+\item {\tt do\_jupe()}:
+\begin{itemize}
+\item If ghosted, does the affected clone reconnect?
+\end{itemize}
+\end{itemize}
+% }}}
+% {{{ Unknown Priority
+\subsection{Unknown Priority}\label{Unknown Priority}\index{Unknown Priority}
+\begin{itemize}
+\item {\tt do\_jupe()}:
+\begin{itemize}
+\item \_2\_ @ {\tt MONITOR}
+\item Handle overflow.
+\end{itemize}
+\item {\tt .select *\&,}
+\item {\tt .deaf}
+\item Write or find some sort of tool that can differentiate between {\tt SOCKS4} and {\tt SOCKS5} proxies.
+\item Should {\tt static} be used more?
+\end{itemize}
+% }}}
+% }}}
+% {{{ Relevant IRC/IRL logs:
+\section{Relevant IRC/IRL logs:}\label{Relevant IRC/IRL logs:}\index{Relevant IRC/IRL logs:}
+% {{{ Jmax
+\subsection{Jmax}\label{Jmax}\index{Jmax}
+% {{{ Jmax and madvirii.
+\subsubsection{Jmax and madvirii}\label{Jmax and madvirii}\index{Jmax and madvirii}
+02:32:57 $<$@Jmax$>$ maybe... add line numbers?\\
+02:33:12 $<$+madvirii$>$ yah, like but it would have to be a system\\
+02:33:19 $<$@Jmax$>$ or after the line is sent to chan, send a message to the next\\\indent bot\\
+02:33:20 $<$+madvirii$>$ cuz it would get old editing your fav asciis\\
+02:33:36 $<$@Jmax$>$ system?\\
+02:33:44 $<$+madvirii$>$ yah like, read the txt file in line by line in an array, and\\\indent then assign a line number to each bot accordingly, if they got banned, it\\\indent might affect it, unless u design a failsafe, but it seems to be the right direction\\\indent to head in\\
+02:34:50 $<$@Jmax$>$ if a bot can't send the message, it's delegated
+% }}}
+% {{{ Jmax, vx`, and madvirii.
+\subsubsection{Jmax, vx`, and madvirii.}\label{Jmax, vx`, and madvirii.}\index{Jmax, vx`, and madvirii.}
+02:44:38 $<$@Jmax$>$ if you mean \emph{cat}|(1)ting, then here's what I have in mind:\\
+02:44:41 $<$@Jmax$>$ 1) determine latency\\
+02:44:47 $<$ vx`$>$ if it's gonna have the ability to scroll an ascii with the whole\\\indent set of bots or some that ie. aren't banned on the channel\\
+02:44:50 $<$@Jmax$>$ 2) ignore any bots with high latency, if there's enough bots\\
+02:44:56 $<$ vx`$>$ then you wouldn't want some bots ruining the ascii because of\\\indent slow links\\
+02:45:38 $<$+madvirii$>$ well, if we determine latency, and then just have the ten\\\indent fastest bots\\
+02:45:52 $<$@Jmax$>$ no, we can't just ignore the bots\\
+02:45:59 $<$ vx`$>$ hardly efficient\\
+02:46:03 $<$@Jmax$>$ if we only have 10, then it'll still be limited. esp. if we have\\\indent 100 more\\
+02:46:34 $<$ vx`$>$ apart from that, low latency links might get a) hit by the other\\\indent bots scrolling b) throttled c) \{banned,muted,shunned,glined\}\\
+02:47:29 $<$@Jmax$>$ 3) determine which bots are capable of speaking in the\\\indent channel. (not\{muted,banned,shunned\}, etc.)\\
+02:47:56 $<$ vx`$>$ freenode's ircd might have some gay features to suppress\\\indent ruining, and you don't necessarily get numerics from the ircd informing you\\
+02:48:11 $<$+madvirii$>$ that is a good 3-step process to execute \emph{prior} to even\\\indent attempting to load a file\\
+02:48:31 $<$@Jmax$>$ 4) pull the file into an array, and assign each line to one of\\\indent those bots\\
+02:48:51 $<$@Jmax$>$ 5) measure nick length, pad accordingly\\
+02:50:18 $<$ vx`$>$ but there are some time constraints on that code,\\\indent proportionally to the amount of bots you're scrolling with\\
+02:50:28 $<$@Jmax$>$ actually, in step 4, do not assign each line to a bot, maintain\\\indent each list separately, a queue for \{bot,line\}s\\
+02:55:02 $<$@Jmax$>$ 6) issue the first line to the first bot in queue, and make\\\indent the second bot wait for a successful message. If, during that time, it is\\\indent determined by the first bot that it \emph{cannot} send the message (and it's not a\\\indent latency issue), the line is re-assigned to the next bot in the queue and\\\indent removed from the queue.\\
+02:55:34 $<$@Jmax$>$ 7) repeat until the file is complete.\\
+02:55:52 $<$@Jmax$>$ that will ensure that, if a bot is kicked, the rest of the bots\\\indent take account for it\\
+02:56:04 $<$+madvirii$>$ so the number of lines in the file queue will determine\\\indent the number of bot instances in the bot queue\\
+02:56:05 $<$@Jmax$>$ and any lines assigned to that bot are not ignored\\
+02:56:10 $<$@Jmax$>$ no, completely independent\\
+02:56:27 $<$ vx`$>$ what do you in case of a line not arriving due to ie. unexpected\\\indent network problems, the link going down completely, etc.\\
+02:56:39 $<$+madvirii$>$ ok so its just for lines in queue\\
+02:57:24 $<$@Jmax$>$ well, that's what the second part of step 6 is for, but that\\\indent doesn't account for netsplits\\
+02:57:48 $<$ vx`$>$ or any other network issues for that matter, like the proxy\\\indent going down or lagging, ...\\
+03:00:02 $<$@Jmax$>$ sure it does, there will be a timeout, there will be the chance\\\indent that the bot is just very very lagged, and wasn't removed from the queue\\\indent earlier, and sends the message, reaches the timeout, and the other bot\\\indent replaces it, however, the message was still sent, so it will show up later\\
+03:02:08 $<$ vx`$>$ sure, but out of order and if that'd happen too often it'd ruin\\\indent the whole thing\\
+03:02:16 $<$@Jmax$>$ right: i think that will be a rarity
+% }}}
+% }}}
+% {{{ LiteralKa blogging to no-one in particular.
+\subsection{LiteralKa blogging to no-one in particular.}\label{LiteralKa blogging to no-one in particular.}\index{LiteralKa blogging to no-one in particular.}
+13:51:56 $<$\&LiteralKa$>$ Maybe a command to spam a specific type of person in\\\indent a given channel: (non-)\{ops,ircops,voiced\}, all, etc.\\
+13:53:34 $<$\&LiteralKa$>$ Synchronized ASCII flooding would be p. cool (read:\\\indent \emph{cat}(1)-style file flooding.)\\
+13:53:48 $<$\&LiteralKa$>$ Like, delegate {\tt x} amount of lines to each bot based on\\\indent connection speed or some other algorithm or something.
+% }}}
+% {{{ Rufas
+\subsection{Rufas}\label{Rufas}\index{Rufas}
+% {{{ Rufas, sparc, and thyme
+\subsubsection{Rufas, sparc, and thyme}\label{Rufas, sparc, and thyme}\index{Rufas, sparc, and thyme}
+21:38:16 $<$+Rucas$>$ i highly suggest you check out {\tt STUPID}, run it from a very\\\indent fast box and it can DDOS an ircd just by flooding text in chat, {\tt SSH Tunnel\\\indent Utilizing Python IRC Destroyer}\\
+21:38:54 $<$ sparc$>$ \emph{Rucas}: how fast of a box are we talking\\
+21:39:00 $<$+Rucas$>$ 100mbit is perfect, basically you need enough bandwidth\\\indent to push all the OTHER boxes at a decent rate, it still does pretty well from\\\indent a standard cable line though\\
+21:39:42 $<$ thyme$>$ cant do something like: start remote processes on machines\\\indent to avoid having to have one big monsterbox and just send signalling from\\\indent home box\\
+21:40:09 $<$+Rucas$>$ well the original intent was cooperative flooding so like,\\\indent you'd have 5 hosts and they'd all paste lines of one ascii, so you could spam\\\indent asciis but bots wouldn't molish you but i never got around to that, because\\\indent of \emph{jenk}'s {\tt irc-rc}
+% }}}
+% {{{ Rufas, incog, and rshxd.
+\subsubsection{Rufas, incog, and rshxd.}\label{Rufas, incog, and rshxd.}\index{Rufas, incog, and rshxd.}
+21:42:43 $<$ rshxd$>$ \emph{Rucas}: since when did you write {\tt ASIAN}\\
+21:42:50 $<$\&Rucas$>$ fucing years ago\\
+21:42:59 $<$ rshxd$>$ I thought \emph{abez} wrote that for you\\
+21:43:02 $<$\&Rucas$>$ no, i wrote it, and \emph{abez} rewrote part of it\\
+21:43:04 $<$ incog$>$ before that was {\tt AYSYN}\\
+21:43:13 $<$\&Rucas$>$ and then \emph{Jmax} rewrote that, and it is on {\tt ASIANv6} or some\\\indent shit, but i wrote {\tt ASIANv1}\\
+21:43:36 $<$ incog$>$ was it based off \emph{mef}'s shit or all new?\\
+21:43:42 $<$\&Rucas$>$ all new, i wish i had \emph{mef}'s code, but now i wrote {\tt STUPID}\\\indent which is much nicer than {\tt ASIAN}
+% }}}
+% }}}
+% {{{ The l0de Radio Hour
+\subsection{The l0de Radio Hour}\label{The l0de Radio Hour}\index{The l0de Radio Hour}
+% {{{ Rufas at [S1E12] 16:26
+\subsubsection{Rufas at [S1E12] 16:26}\label{Rufas at [S1E12] 16:26}\index{Rufas at [S1E12] 16:26}
+\emph{l0de}: [If you steal that idea] my lawyers will fuck you so severely that it's not\\\indent even funny...\\
+\emph{Rufas}: I'm sure they will, just like that guy's 800 bot botnet running wild on\\\indent EFNet right now.\\
+\emph{l0de}: Holy shit, that's hillarious--he's got 800 bots now?\\
+\emph{Rufas}: Yeah, he's up to 900 now.\\
+\emph{l0de}: 900 fuckin' bots, through a JPEG redirect exploit-type of thing? [...] And\\\indent for our listeners, basically this guy coded an Internet Explorer link that runs\\\indent an mIRC exploit and basically \bf{turns your computar into botnet}\rm\\
+\emph{Rufas}: And he authorized us to reverse engineer it [...] We can use it to assrape\\\indent \emph{\#politics}.
+% }}}
+% {{{ Rufas at [20100409] 30:00
+\subsubsection{Rufas at [20100409] 30:00}\label{Rufas at [20100409] 30:00}\index{Rufas at [20100409] 30:00}
+\emph{l0de}: Alright, so what people really want to hear about from you is the ruin:\\\indent the mega ruin that is going on. And you have this \bf{massive}\rm\symbol{32} fucking botnet\\\indent and you're annihilating everything that comes into contact with you. I know\\\indent Hardchats was DDoSed massively last night, primarily because of your\\\indent exploits. Why don't you tell us what happened?\\
+\emph{Rufas}: Well, not a heck of a lot has really changed with what I've been doing.\\\indent I've used the new tool I wrote a few months ago called {\tt STUPID} but-\\
+\emph{l0de}: Is this a reference to \emph{Max Goldberg}'s {\tt AYSYN}--no it was \emph{mef} that wrote\\\indent {\tt AYSYN} right?\\
+\emph{Rufas}: \emph{mef} wrote {\tt AYSYN} and I wrote {\tt ASIAN} based on that which was {\tt Automated\\\indent Synchronous IRC Attack Network}. And then based on that I made {\tt STUPID},\\\indent which is {\tt SSH Tunnel Utilizing Python IRC Destroyer}--because they all\\\indent have to have some sort of stupid {\tt GNU} acronym to go with them.
+% }}}
+% {{{ sloth at [20100409] 3:07:21
+\subsubsection{sloth at [20100409] 3:07:21}\label{sloth at [20100409] 3:07:21}\index{sloth at [20100409] 3:07:21}
+\emph{sloth}: I've gotten a lot of comments about "Oh my God! This is the first IPv6\\\indent botnet I've ever seen."\\
+\emph{sloth}: We are on the cutting edge of IRC flooding: we are pushing it into IPv6\\\indent and people just \bf{don't even know}\rm.
+% }}}
+% }}}
+% }}}
+% }}}
+\end{document}
